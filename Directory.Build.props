@@ -22,6 +22,8 @@
     <Product>WebViewControl</Product>
     <Copyright>Copyright © OutSystems 2023</Copyright>
     <RepositoryUrl>https://github.com/imesense-packages/cefglue-webview</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == '' or '$(Platform)' == 'x64'">
