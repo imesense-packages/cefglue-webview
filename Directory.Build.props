@@ -9,8 +9,8 @@
   <PropertyGroup>
     <TargetDotnetVersion>net8.0</TargetDotnetVersion>
     <Platforms>x64;ARM64</Platforms>
-    <AvaloniaVersion>11.0.10</AvaloniaVersion>
-    <CefGlueVersion>120.6099.207</CefGlueVersion>
+    <AvaloniaVersion>11.0.9</AvaloniaVersion>
+    <CefGlueVersion>120.6099.211.1</CefGlueVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,20 +18,19 @@
     <FileVersion>2.0.0.0</FileVersion>
     <!-- Please see https://github.com/OutSystems/WebView?tab=readme-ov-file#versioning for versioning rules -->
     <Version>3.120.11</Version>
-    <Authors>OutSystems</Authors>
+    <Authors>ImeSense,acidicMercury8</Authors>
     <Product>WebViewControl</Product>
     <Copyright>Copyright © OutSystems 2023</Copyright>
-    <PackageProjectUrl>https://github.com/OutSystems/WebView</PackageProjectUrl>
-    <PackageOutputPath>$(MSBuildProjectDirectory)\..\nuget</PackageOutputPath>
+    <RepositoryUrl>https://github.com/imesense-packages/cefglue-webview</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == '' or '$(Platform)' == 'x64'">
-    <PackageSuffix />
-    <CefGluePackageSuffix />
+    <PackageSuffix>.x64</PackageSuffix>
+    <CefGluePackageSuffix>.x64</CefGluePackageSuffix>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == 'ARM64'">
-    <PackageSuffix>-ARM64</PackageSuffix>
+    <PackageSuffix>.ARM64</PackageSuffix>
     <CefGluePackageSuffix>.ARM64</CefGluePackageSuffix>
   </PropertyGroup>
 </Project>
