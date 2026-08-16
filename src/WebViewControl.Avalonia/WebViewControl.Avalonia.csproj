@@ -65,9 +65,20 @@
 
   <ItemGroup>
     <!--When we upload Avalonia here, we should increase the version of both WebViewControl.Avalonia as well as ReactViewControl.Avalonia-->
-    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia" PrivateAssets="all" />
     <PackageReference PrivateAssets="None" Include="ImeSense.CefGlue.Avalonia$(CefGluePackageSuffix)" />
     <PackageReference Include="Microsoft.CSharp" />
     <PackageReference Include="System.Runtime.Loader" />
   </ItemGroup>
+
+    <ItemGroup>
+        <None
+            Include="build\WebViewControl.Avalonia.targets"
+            Pack="True"
+            PackagePath="build\ImeSense.WebViewControl.Avalonia$(PackageSuffix).targets" />
+        <None
+            Include="build\WebViewControl.Avalonia.targets"
+            Pack="True"
+            PackagePath="buildTransitive\ImeSense.WebViewControl.Avalonia$(PackageSuffix).targets" />
+    </ItemGroup>
 </Project>

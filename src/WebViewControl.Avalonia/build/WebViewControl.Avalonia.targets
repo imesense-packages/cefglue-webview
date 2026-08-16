@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <WebViewControlAvaloniaMinVersion>11.0.9</WebViewControlAvaloniaMinVersion>
+    </PropertyGroup>
+
+    <Target
+        Name="WebViewControlValidateAvaloniaReference"
+        AfterTargets="ResolvePackageReferences">
+        <!-- Check `ResolvedPackageReference` first (includes transitive packages, e.g. via `Avalonia.Desktop`). -->
+        <ItemGroup>
+            <WebViewControlAvaloniaResolved
+                Include="@(ResolvedPackageReference)"
+                Condition="'%(Identity)' == 'Avalonia'" />
+        </ItemGroup>
+
+        <!-- Fallback: check `PackageReference` directly (for SDK versions that don't populate `ResolvedPackageReference`). -->
+        <ItemGroup Condition="'@(WebViewControlAvaloniaResolved)' == ''">
+            <WebViewControlAvaloniaResolved
+                Include="@(PackageReference)"
+                Condition="'%(Identity)' == 'Avalonia'" />
+        </ItemGroup>
+
+        <PropertyGroup>
+            <WebViewControlAvaloniaVersion>@(WebViewControlAvaloniaResolved->'%(Version)')</WebViewControlAvaloniaVersion>
+        </PropertyGroup>
+
+        <Error
+            Condition="'$(WebViewControlAvaloniaVersion)' == ''"
+            Text="WebViewControl.Avalonia requires the 'Avalonia' package (>= $(WebViewControlAvaloniaMinVersion)). Add a PackageReference to 'Avalonia' or a meta-package that includes it (e.g., 'Avalonia.Desktop')." />
+
+        <Error
+            Condition="'$(WebViewControlAvaloniaVersion)' != '' and $([MSBuild]::VersionLessThan('$(WebViewControlAvaloniaVersion)', '$(WebViewControlAvaloniaMinVersion)'))"
+            Text="WebViewControl.Avalonia requires Avalonia >= $(WebViewControlAvaloniaMinVersion), but found version $(WebViewControlAvaloniaVersion). Please upgrade your Avalonia package reference." />
+    </Target>
+</Project>
