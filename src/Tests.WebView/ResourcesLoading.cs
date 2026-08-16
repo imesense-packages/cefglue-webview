@@ -63,8 +63,8 @@ namespace Tests.WebView {
 
             ResourceUrl GetResourceUrl(Version version) {
                 var executingAssembly = Assembly.GetExecutingAssembly();
-                var executingDdirectory = Path.GetDirectoryName(executingAssembly.Location);
-                var dllDirectory = executingDdirectory.Replace(executingAssembly.GetName().Name, $"{resourcesAssemblyName}.V{version}");
+                var testsOutputDirectory = Path.GetDirectoryName(executingAssembly.Location);
+                var dllDirectory = Path.Combine(testsOutputDirectory, resourcesAssemblyName, version.ToString());
                 var dllPath = Path.Combine(dllDirectory, $"{resourcesAssemblyName}.dll");
                 var assembly = Assembly.Load(File.ReadAllBytes(dllPath));
                 return new ResourceUrl(assembly, "Resource.txt");

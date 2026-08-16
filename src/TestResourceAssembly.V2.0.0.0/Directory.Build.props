@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <Import Project="..\..\Directory.Build.props" />
+
+    <PropertyGroup>
+        <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\obj\$(MSBuildProjectName)\2.0.0.0\</BaseIntermediateOutputPath>
+    </PropertyGroup>
+</Project>

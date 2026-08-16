@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>$(TargetDotnetVersion)</TargetFramework>
-    <OutputPath>$(MSBuildProjectDirectory)\bin\</OutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <PlatformTarget>$(Platform)</PlatformTarget>
     <IsPackable>false</IsPackable>
